@@ -18,10 +18,28 @@ public class Demo {
 		
 //		edao.showData();
 		
-		edao.getFunc();
+//		edao.getFunc();
+		
+		edao.getNameS(12);
 		
 
 
 	}
 
 }
+
+
+//CREATE OR REPLACE PROCEDURE updatesal (emp_id NUMBER, outstaticip OUT VARCHAR2) IS
+//Varr myemployee.name%Type;
+//BEGIN
+//select name
+//into Varr
+//from myemployee
+//where ID = emp_id;
+//
+//if Varr <> 'Pedro' then
+//outstaticip:= Varr;
+//else
+//outstaticip:= 'nok';
+//end if;
+//END updatesal;

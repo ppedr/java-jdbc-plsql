@@ -125,11 +125,45 @@ public class EmployeeDao {
 			
 			System.out.print("Total is "+ tot);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public void upSal() {
+		
+		Connection con = DBConnection.getConnection();
 		
 		
+		try {
+			CallableStatement cstmt = con.prepareCall("{? = call GETSAL()}");
+			cstmt.registerOutParameter(1, Types.INTEGER);
+			cstmt.executeUpdate();
+			int tot= cstmt.getInt(1);
+			
+			System.out.print("Total is "+ tot);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void getNameS(int id) {
+		
+		Connection con = DBConnection.getConnection();
+		
+		String output = null;
+		
+		
+		try {
+			CallableStatement cstmt = con.prepareCall("{call updatesal(?, ?)}");
+			cstmt.registerOutParameter(2, Types.VARCHAR);
+			cstmt.setInt(1, id);
+			cstmt.executeUpdate();
+			String tot= cstmt.getString(2);
+			
+			System.out.print("Total is "+ tot);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }
