@@ -20,7 +20,13 @@ public class Demo {
 		
 //		edao.getFunc();
 		
-		edao.getNameS(12);
+//		edao.getNameS(12);
+		
+		edao.showData();
+		
+		edao.doubleSal(12);
+		
+		edao.showData();
 		
 
 

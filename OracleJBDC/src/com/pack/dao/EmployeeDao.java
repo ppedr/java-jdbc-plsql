@@ -100,7 +100,7 @@ public class EmployeeDao {
 				ResultSet res = ps.executeQuery();
 				
 				while(res.next()) {
-					System.out.println(res.getInt(1) + "\t" + res.getString(2) + "\t" + res.getString(3));
+					System.out.println(res.getInt(1) + "\t" + res.getString(2) + "\t" + res.getString(3) + "\t" + res.getInt(4));
 				}
 				
 				con.close();
@@ -160,7 +160,22 @@ public class EmployeeDao {
 			cstmt.executeUpdate();
 			String tot= cstmt.getString(2);
 			
-			System.out.print("Total is "+ tot);
+			System.out.println("Total is "+ tot);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void doubleSal(int id) {
+		
+		Connection con = DBConnection.getConnection();
+			
+		try {
+			CallableStatement cstmt = con.prepareCall("{call doubleSal(?)}");
+			cstmt.setInt(1, id);
+			cstmt.executeUpdate();
+			
+			System.out.println("Sal doubled!");
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

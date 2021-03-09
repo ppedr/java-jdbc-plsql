@@ -1,0 +1,25 @@
+create or replace PROCEDURE updatesal (emp_id NUMBER, outstaticip OUT VARCHAR2) IS
+       Varr myemployee.name%Type;
+BEGIN
+  select name
+  into Varr
+  from myemployee
+  where ID = emp_id;
+  
+  if Varr <> 'Pedro' then
+    outstaticip:= Varr;
+  else
+    outstaticip:= 'nok';
+  end if;
+END updatesal;
+
+
+create or replace FUNCTION    GETSAL RETURN NUMBER IS
+       t_tot NUMBER := 0;
+BEGIN
+  select sum(sal) into t_tot
+  from myemployee;
+  
+  return t_tot * 2;
+
+END GETSAL;
